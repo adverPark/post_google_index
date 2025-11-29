@@ -1,0 +1,23 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# 환경 변수 파일 (민감한 정보 포함)
+.env
+
+# Google Service Account 키 파일 (민감한 정보)
+*.json
+!package.json
+
+# 로그 파일
+logs/
+
+# 데이터 파일 (CSV)
+data/
