@@ -30,6 +30,7 @@ python main.py
 - **함수형 프로그래밍**: Class 대신 함수 사용
 - **상세한 주석**: 초보자도 이해할 수 있게 작성
 - **Context7 MCP 서버**: 기능 구현 시 항상 context7 MCP 서버 참조
+- 커밋은 요청시에만 진행 할것!
 
 ## 프로젝트 구조
 
@@ -71,6 +72,5 @@ post_google_index/
 
 ## 문서
 
-- [prd.md](prd.md) - 상세 요구사항 문서
 - [docs/development-plan.md](docs/development-plan.md) - 개발 순서 (Phase 1~7)
 
