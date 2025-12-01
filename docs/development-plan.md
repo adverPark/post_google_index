@@ -14,12 +14,37 @@
 3. 사이트맵 인덱스 처리 (여러 사이트맵 파일 처리)
 4. URL 최신순 정렬 기능 구현
 
-## Phase 3: CSV 관리 시스템
+## Phase 3: CSV 관리 시스템 ✅ 완료
 
-1. CSV 파일 읽기/쓰기 함수 구현
-2. URL 상태 확인 함수 구현
-3. URL 추가 및 상태 업데이트 함수 구현
-4. PENDING 상태 URL 필터링 함수 구현
+1. ✅ CSV 파일 읽기/쓰기 함수 구현
+2. ✅ URL 상태 확인 함수 구현
+3. ✅ URL 추가 및 상태 업데이트 함수 구현
+4. ✅ PENDING 상태 URL 필터링 함수 구현 (URL,상태,날짜)
+
+### 구현된 기능:
+- `read_csv()`: CSV 파일 읽기
+- `write_csv()`: CSV 파일 쓰기
+- `get_url_status()`: 특정 URL의 상태 확인
+- `add_url()`: 단일 URL 추가 (중복 체크 포함)
+- `update_url_status()`: URL 상태 업데이트 (재시도 횟수 증가 옵션)
+- `get_pending_urls()`: PENDING 상태 URL 필터링 (limit 옵션)
+- `add_urls_batch()`: 여러 URL 일괄 추가
+- `get_statistics()`: 통계 정보 조회
+
+### CSV 필드 구조:
+- `url`: URL 주소
+- `status`: 상태 (PENDING/SUCCESS/FAILED)
+- `lastmod`: 마지막 수정일
+- `created_at`: 생성 시간
+- `updated_at`: 업데이트 시간
+- `retry_count`: 재시도 횟수
+
+### 테스트 결과:
+- 단일/배치 URL 추가: 정상 작동
+- 중복 URL 처리: 정상 작동
+- 상태 업데이트 및 재시도 횟수 증가: 정상 작동
+- PENDING URL 필터링 및 limit: 정상 작동
+- 통계 정보 조회: 정상 작동
 
 ## Phase 4: Google Indexing API 연동
 

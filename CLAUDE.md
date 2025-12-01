@@ -48,7 +48,7 @@ post_google_index/
 ├── data/               # CSV 파일 저장
 ├── logs/               # 로그 파일 저장
 ├── .env                # 환경 변수 (SITEMAP_URL, SERVICE_ACCOUNT_FILE 등)
-└── prd.md              # 상세 요구사항 문서
+
 ```
 
 ## 핵심 데이터 흐름
