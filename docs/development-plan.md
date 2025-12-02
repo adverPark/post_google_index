@@ -46,12 +46,40 @@
 - PENDING URL 필터링 및 limit: 정상 작동
 - 통계 정보 조회: 정상 작동
 
-## Phase 4: Google Indexing API 연동
+## Phase 4: Google Indexing API 연동 ✅ 완료
 
-1. Service Account 인증 구현
-2. 단일 URL 인덱싱 함수 구현
-3. 재시도 로직 구현 (최대 3회)
-4. Rate Limiting 처리 (API 제한 고려)
+1. ✅ Service Account 인증 구현
+2. ✅ 단일 URL 인덱싱 함수 구현
+3. ✅ 재시도 로직 구현 (최대 3회)
+4. ✅ Rate Limiting 처리 (API 제한 고려)
+
+### 구현된 기능:
+- `create_indexing_service()`: Service Account 인증 및 API 서비스 생성
+- `submit_urls()`: URL 인덱싱 (1~100개, 재시도 로직 포함)
+  - 단일/배치 통합: 1개든 100개든 동일한 함수 사용
+  - 자동 재시도: 실패한 URL만 선택적으로 재시도
+  - 콜백 지원: 실시간 진행 상황 모니터링
+- `get_url_status()`: URL 인덱싱 상태 조회
+
+### API 사양:
+- **엔드포인트**: `https://indexing.googleapis.com/v3/urlNotifications:publish`
+- **인증**: Service Account 기반 OAuth2
+- **Scope**: `https://www.googleapis.com/auth/indexing`
+- **배치 제한**: 최대 100개 URL/요청
+- **일일 제한**: 200개 요청 (배치 사용 시 20,000개 URL)
+
+### 에러 처리:
+- **403 Forbidden**: 권한 없음 또는 API 비활성화
+- **429 Too Many Requests**: 할당량 초과
+- **400 Bad Request**: 잘못된 요청 형식
+- 재시도 간 지연 시간 적용 (REQUEST_DELAY)
+
+### 테스트:
+- Service Account 인증 테스트
+- 단일 URL 제출 테스트
+- 재시도 로직 테스트
+- 배치 제출 테스트 (최대 100개)
+- URL 상태 조회 테스트
 
 ## Phase 5: 로깅 및 에러 처리
 
@@ -67,9 +95,3 @@
 3. 에러 케이스 테스트
 4. 최종 검증
 
-## Phase 7: 문서화
-
-1. README.md 작성
-2. Google API 키 발급 가이드 작성
-3. 사용 방법 및 주의사항 문서화
-4. 코드 주석 최종 검토

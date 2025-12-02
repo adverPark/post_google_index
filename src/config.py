@@ -24,8 +24,8 @@ def load_config():
     Raises:
         ValueError: 필수 설정이 누락된 경우
     """
-    # .env 파일 로드
-    load_dotenv()
+    # .env 파일 로드 (기존 환경 변수 덮어쓰기)
+    load_dotenv(override=True)
 
     # 필수 설정값 가져오기
     sitemap_url = os.getenv('SITEMAP_URL')
